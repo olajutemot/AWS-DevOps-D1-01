@@ -7,11 +7,14 @@ phases:
 
   build:
     commands:
-      - echo "Starting application checks..."
+      - echo "Starting CI/CD validation..."
       - test -f index.html
-      - echo "index.html exists"
-      - if [ -f server.js ]; then node --check server.js; fi
-      - echo "Application checks completed successfully"
+      - test -f package.json
+      - test -f server.js
+      - node -e "JSON.parse(require('fs').readFileSync('package.json', 'utf8'))"
+      - node --check server.js
+      - grep -q "task-9-final-test-v1" index.html
+      - echo "All application checks passed."
 
 artifacts:
   files:
