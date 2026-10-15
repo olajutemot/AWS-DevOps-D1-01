@@ -1,0 +1,9 @@
+{
+  "name": "aws-devops-class01",
+  "version": "1.0.0",
+  "description": "Sample application for AWS CI/CD practice",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
