@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 22
+
+  build:
+    commands:
+      - echo "Starting application checks..."
+      - test -f index.html
+      - echo "index.html exists"
+      - if [ -f server.js ]; then node --check server.js; fi
+      - echo "Application checks completed successfully"
+
+artifacts:
+  files:
+    - '**/*'
